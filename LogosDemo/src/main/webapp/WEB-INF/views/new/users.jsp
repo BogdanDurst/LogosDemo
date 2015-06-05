@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF8"
 	pageEncoding="UTF8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
 <table>
@@ -10,7 +9,7 @@
 		<th>Name</th>
 		<th>Email</th>
 	</tr>
-	<c:forEach items="${users}" var="user">
+	<c:forEach items="${usersList}" var="user">
 		<tr>
 			<td><a href="users/${user.id}">${user.id }</a></td>
 			<td><a href="users/name/${user.userName}">${user.userName }</a></td>

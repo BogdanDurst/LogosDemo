@@ -18,12 +18,13 @@ public class UserDaoImpl extends BaseDaoImpl<User, Long> implements UserDao {
 	@Transactional
 	public User findByName(String name) {
 		try {
-			return (User) entityManager.createNamedQuery(User.FIND_BY_NAME).setParameter("name", name).getSingleResult();
+			return (User) entityManager.createNamedQuery(User.FIND_BY_NAME)
+					.setParameter("name", name).getSingleResult();
 		} catch (NoResultException e) {
 			return null;
 		}
 	}
-	
+
 	@Transactional
 	public User findByEmail(String email) {
 		try {

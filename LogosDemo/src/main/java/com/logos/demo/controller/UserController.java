@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.logos.demo.model.User;
 import com.logos.demo.service.UserService;
 
 @Controller
@@ -18,18 +20,21 @@ public class UserController {
 	@Inject
 	private UserService userService;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String getUsers(Model model) {
+	@RequestMapping()
+	public ModelAndView getUsers(ModelAndView model) {
 
-		model.addAttribute("users", userService.getAllUsers());
+		model.addObject("usersList", userService.getAllUsers());
+		model.setViewName("users");
 
-		return "users";
+		return model;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String getUserById(Model model, @PathVariable long id) {
+		
+		User user = userService.getUserInfo(id);
 
-		model.addAttribute("userInfo", userService.getUserInfo(id));
+		model.addAttribute("userInfo", user);
 
 		return "user";
 	}
@@ -42,8 +47,8 @@ public class UserController {
 		return "user";
 	}
 
-	@RequestMapping(value = "/email", method = RequestMethod.POST)
-	public String getUserByEmail(Model model, @RequestParam String email) {
+	@RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
+	public String getUserByEmail(Model model, @PathVariable String email) {
 
 		model.addAttribute("userInfo", userService.getUserInfoByEmail(email));
 
@@ -51,11 +56,13 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createUser(@RequestParam String email, @RequestParam String userName, @RequestParam String password) {
+	public String createUser(@RequestParam String email,
+			@RequestParam String userName, @RequestParam String password) {
 
 		userService.saveUser(userName, email, password);
 
 		return "redirect:/users";
+		
 	}
 
 }
