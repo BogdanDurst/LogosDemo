@@ -25,7 +25,10 @@ public abstract class BaseDaoImpl<E, N extends Number> implements BaseDao<E, N> 
 	@Transactional
 	public E findById(N id) {
 		try {
-			return (E) entityManager.createQuery("select e from " + entityClass.getSimpleName() + " e where e.id = :id")
+			return (E) entityManager
+					.createQuery(
+							"select e from " + entityClass.getSimpleName()
+									+ " e where e.id = :id")
 					.setParameter("id", id).getSingleResult();
 		} catch (NoResultException e) {
 			return null;
@@ -51,15 +54,17 @@ public abstract class BaseDaoImpl<E, N extends Number> implements BaseDao<E, N> 
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<E> findAll() {
-		return entityManager.createQuery("from " + entityClass.getSimpleName()).getResultList();
+		return entityManager.createQuery("from " + entityClass.getSimpleName())
+				.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<E> findAllByPage(int count, int page) {
+		
 		int startFrom = page * count - count;
-		return entityManager.createQuery("from " + entityClass.getSimpleName()).setFirstResult(startFrom).setMaxResults(count)
-				.getResultList();
+		return entityManager.createQuery("from " + entityClass.getSimpleName())
+				.setFirstResult(startFrom).setMaxResults(count).getResultList();
 	}
 
 }

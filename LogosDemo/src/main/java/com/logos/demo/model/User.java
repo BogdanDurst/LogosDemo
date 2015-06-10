@@ -9,11 +9,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = User.FIND_BY_NAME, query = "SELECT u FROM User u WHERE u.userName = :name"),
-		@NamedQuery(name = User.FIND_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email") })
+@NamedQueries({
+		@NamedQuery(name = User.FIND_BY_NAME, 
+				query = "SELECT u FROM User u WHERE u.userName = :name"),
+		@NamedQuery(name = User.FIND_BY_EMAIL, 
+				query = "SELECT u FROM User u WHERE u.email = :email") })
 public class User {
 
-	public static final String FIND_BY_NAME = "User.findByName";
+	public static final String FIND_BY_NAME = "User.findByName2";
 	public static final String FIND_BY_EMAIL = "User.findByEmail";
 
 	@Id
