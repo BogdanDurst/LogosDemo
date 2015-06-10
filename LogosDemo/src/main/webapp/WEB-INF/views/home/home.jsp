@@ -5,9 +5,6 @@
 <title>Home</title>
 </head>
 <body>
-	<h1>Welcome to Logos Demo home page!</h1>
-
-	<a href="users">Users</a>
-
+	<h1>Home page content</h1>
 </body>
 </html>
