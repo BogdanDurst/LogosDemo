@@ -20,6 +20,7 @@
 			</beans:value>
 		</beans:property>
 	</beans:bean>
+	
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions">
@@ -28,4 +29,5 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
+	
 </beans:beans>

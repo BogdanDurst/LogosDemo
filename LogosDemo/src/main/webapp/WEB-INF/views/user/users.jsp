@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="<c:url value="/resources/css/users.css" />" rel="stylesheet">
 
-
 <table id="users_table" class="table default_table">
 	<thead>
 		<tr>
@@ -12,7 +11,7 @@
 			<th>Email</th>
 		</tr>
 	</thead>
-	<c:forEach items="${users}" var="user">
+	<c:forEach items="${usersList}" var="user">
 		<tr>
 			<td><a href="users/${user.id}">${user.id }</a></td>
 			<td><a href="users/name/${user.userName}">${user.userName }</a></td>
@@ -36,8 +35,7 @@
 				type="password" name="password" class="form-control"
 				placeholder="password">
 		</div>
-
+		
 		<button class="btn btn-sample" type="submit">Submit</button>
 	</div>
-
 </form>
