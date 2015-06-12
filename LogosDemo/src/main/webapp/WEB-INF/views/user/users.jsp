@@ -2,7 +2,7 @@
 	pageEncoding="UTF8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="<c:url value="/resources/css/users.css" />" rel="stylesheet">
-
+<%@ page session="false"%>
 
 <table id="users_table" class="table default_table">
 	<thead>
@@ -12,7 +12,7 @@
 			<th>Email</th>
 		</tr>
 	</thead>
-	<c:forEach items="${users}" var="user">
+	<c:forEach items="${usersList}" var="user">
 		<tr>
 			<td><a href="users/${user.id}">${user.id }</a></td>
 			<td><a href="users/name/${user.userName}">${user.userName }</a></td>

@@ -2,7 +2,7 @@
 	pageEncoding="UTF8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-
+<%@ page session="false"%>
 <!DOCTYPE HTML>
 <html>
 <head>
