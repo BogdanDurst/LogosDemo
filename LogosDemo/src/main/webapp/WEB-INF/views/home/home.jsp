@@ -2,10 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <%@ page session="false"%>
-<html>
-<head>
-<title>Home</title>
-</head>
+
 <body>
 	<sec:authorize access="isAnonymous()">
 		<form action="j_spring_security_check" method="post">
@@ -24,4 +21,4 @@
 		<a href="<c:url value="/j_spring_security_logout"/>">Log Out</a>
 	</sec:authorize>
 </body>
-</html>
+

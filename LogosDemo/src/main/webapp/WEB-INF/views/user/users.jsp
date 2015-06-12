@@ -36,8 +36,7 @@
 				type="password" name="password" class="form-control"
 				placeholder="password">
 		</div>
-
+		
 		<button class="btn btn-sample" type="submit">Submit</button>
 	</div>
-
 </form>
