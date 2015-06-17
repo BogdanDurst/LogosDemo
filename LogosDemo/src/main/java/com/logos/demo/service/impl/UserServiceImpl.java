@@ -5,12 +5,14 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import com.logos.demo.dao.UserDao;
 import com.logos.demo.model.User;
 import com.logos.demo.service.UserService;
 
+@Secured("ROLE_USER")
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,6 +24,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.findAll();
 	}
 
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	@Transactional
 	public User getUserInfo(long userId) {
 		User user = userDao.findById(userId);

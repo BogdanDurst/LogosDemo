@@ -9,9 +9,9 @@
 	<http pattern="/css/**" security="none" />
 
 	<http auto-config="true" use-expressions="true">
-
-		<form-login login-page="/login" login-processing-url="/j_spring_security_check"
-			authentication-failure-url="/home" default-target-url="/home" />
+		<form-login authentication-failure-url="/users"
+			login-processing-url="/login_user" password-parameter="password"
+			username-parameter="email" default-target-url="/home" />
 	</http>
 
 	<beans:bean id="userDetailsService"
@@ -19,6 +19,11 @@
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
+		</authentication-provider>
+		<authentication-provider>
+			<user-service>
+				<user name="admin" password="admin" authorities="ROLE_ADMIN" />
+			</user-service>
 		</authentication-provider>
 	</authentication-manager>
 	<global-method-security secured-annotations="enabled" />

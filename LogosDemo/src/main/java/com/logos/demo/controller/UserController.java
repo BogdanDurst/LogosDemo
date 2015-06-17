@@ -1,6 +1,9 @@
 package com.logos.demo.controller;
 
+import java.security.Principal;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,11 +30,26 @@ public class UserController {
 		model.setViewName("users");
 
 		return model;
+
+	}
+
+	@RequestMapping(value = "/my", method = RequestMethod.GET)
+	public String userPage(Principal principal, Model model,
+			HttpServletRequest request) {
+
+		if (request.isUserInRole("ROLE_USER")) {
+
+			User user = userService.getUserInfo(Long.parseLong(principal
+					.getName()));
+			model.addAttribute("userInfo", user);
+		}
+
+		return "user";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String getUserById(Model model, @PathVariable long id) {
-		
+
 		User user = userService.getUserInfo(id);
 
 		model.addAttribute("userInfo", user);
@@ -62,7 +80,7 @@ public class UserController {
 		userService.saveUser(userName, email, password);
 
 		return "redirect:/users";
-		
+
 	}
 
 }

@@ -5,11 +5,11 @@
 
 <body>
 	<sec:authorize access="isAnonymous()">
-		<form action="j_spring_security_check" method="post">
+		<form action="login_user" method="post">
 			<div>
-				<input type="text" class="form-control" name="j_username"
-					placeholder="login" required> <input type="password"
-					class="form-control" name="j_password" placeholder="password"
+				<input type="email" class="form-control" name="email"
+					placeholder="email" required> <input type="password"
+					class="form-control" name="password" placeholder="password"
 					required>
 			</div>
 			<div>
